@@ -1,0 +1,45 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.userprefs
+*.DotSettings.user
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## NuGet
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+packages/
+!**/packages/build/
+
+## Secrets
+appsettings.Development.json
+appsettings.Production.json
+**/secrets.json
+.env
+.env.*
+
+## Docker
+.dockerignore
+
+## OS
+.DS_Store
+Thumbs.db
