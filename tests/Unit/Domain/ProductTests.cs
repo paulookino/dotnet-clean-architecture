@@ -1,6 +1,7 @@
 using Domain.Entities;
 using Domain.Exceptions;
 using FluentAssertions;
+using Xunit;
 
 namespace Unit.Domain;
 

@@ -2,6 +2,7 @@ using Application.Commands.CreateProduct;
 using Domain.Interfaces;
 using FluentAssertions;
 using Moq;
+using Xunit;
 
 namespace Unit.Application;
 
