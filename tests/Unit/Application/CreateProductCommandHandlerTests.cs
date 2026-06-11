@@ -1,4 +1,6 @@
 using Application.Commands.CreateProduct;
+using Domain.Entities;
+using Domain.Exceptions;
 using Domain.Interfaces;
 using FluentAssertions;
 using Moq;
@@ -32,7 +34,7 @@ public sealed class CreateProductCommandHandlerTests
         result.Name.Should().Be("Widget");
         result.Price.Should().Be(9.99m);
         result.Stock.Should().Be(100);
-        _productRepository.Verify(r => r.AddAsync(It.IsAny<Domain.Entities.Product>(), It.IsAny<CancellationToken>()), Times.Once);
+        _productRepository.Verify(r => r.AddAsync(It.IsAny<Product>(), It.IsAny<CancellationToken>()), Times.Once);
         _unitOfWork.Verify(u => u.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
     }
 
@@ -47,7 +49,7 @@ public sealed class CreateProductCommandHandlerTests
 
         var act = async () => await _handler.Handle(command, CancellationToken.None);
 
-        await act.Should().ThrowAsync<Domain.Exceptions.DomainException>()
+        await act.Should().ThrowAsync<DomainException>()
             .WithMessage("*already exists*");
     }
 }
