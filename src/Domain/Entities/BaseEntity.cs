@@ -1,3 +1,5 @@
+using Domain.Events;
+
 namespace Domain.Entities;
 
 public abstract class BaseEntity
@@ -6,9 +8,9 @@ public abstract class BaseEntity
     public DateTime CreatedAt { get; protected set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; protected set; }
 
-    private readonly List<object> _domainEvents = [];
-    public IReadOnlyCollection<object> DomainEvents => _domainEvents.AsReadOnly();
+    private readonly List<IDomainEvent> _domainEvents = [];
+    public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
-    protected void AddDomainEvent(object domainEvent) => _domainEvents.Add(domainEvent);
+    protected void AddDomainEvent(IDomainEvent domainEvent) => _domainEvents.Add(domainEvent);
     public void ClearDomainEvents() => _domainEvents.Clear();
 }
